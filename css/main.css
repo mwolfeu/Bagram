@@ -1,0 +1,120 @@
+#root {
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+}
+
+#root .row {
+  display: flex;
+  flex-direction: row;
+}
+
+#root #top > *,
+#root #info > *,
+#root #vis > *,
+#root #bottom > * {
+  margin: 8px;
+}
+
+#root #top {
+}
+
+#root #top #title #top {
+  font-size: 1.3rem;
+  letter-spacing: 0.4em;
+}
+
+#root #top #title #bottom {
+  font-size: 6rem;
+  font-weight: bold;
+  line-height: .7em;
+}
+
+#root #top #chapeau {
+  font-size: 22px;
+  max-width: 20em;
+  margin: auto;
+  margin-left: 0px;
+}
+  
+#root #top #group {
+  background-image: url('../img/JPP-Logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 8rem;
+  width: 12rem;
+  margin: auto 0px;
+}
+
+#root #info {
+  font-size: 2rem;
+  height: 3rem;
+}
+
+#root #info > * {
+  display: flex;
+  flex-direction: row;
+  position: absolute; 
+  oopacity: 0;
+}
+
+/*
+#root #info > *:nth-child(1) {
+  opacity: 1 ;
+}
+*/
+
+#root #info div > * {
+    margin-right: 1em;
+    text-align: center;
+}
+
+#root #info .info-icons {
+    width: 1em;
+    height: 1em;
+    vertical-align: text-bottom;
+    margin-right: .3em;
+}
+
+#root #vis {
+}
+
+#root #vis > * {
+    width: 100%;
+}
+
+#root #bottom {
+}
+
+#root #bottom > * {
+    width: 100%;
+}
+
+#root #bottom #howto{
+    border: black solid;
+    border-width: 3px 0px 0px 0px;
+    display: flex;
+}
+
+#root #bottom #chart {
+    margin: 0px auto;
+    width: min-content;
+    margin: 0px auto;
+}
+
+#root #bottom #howto #text{
+    width: 60%;
+    margin-right: auto;
+}
+
+#root #bottom #howto #about{
+  background-image: url('../img/info-circle-solid.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 2rem;
+  width: 2rem;
+  margin: auto 0px;
+}
+
