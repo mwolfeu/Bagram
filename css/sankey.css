@@ -1,5 +1,13 @@
+#sankey {
+  overflow-y: auto !important;  
+}
+
+#sankey-svg {
+}
+
 #sankey .node {
-  width: 5px; 
+  width: 7px; 
+  transform: translateX(-2px);
 }
 
 #vis #sankey path {
@@ -10,6 +18,7 @@
 }
 
 #vis #sankey path.unselected {
+  opacity: .1;
 }
 
 #vis #sankey path.selected {
@@ -17,7 +26,8 @@
 }
 
 #sankey text {
-    transform: rotate(-90deg) translate(0px, 0px);
+    transform: rotate(-90deg) translate(0px, -5px);
     transform-origin: center center;
     transform-box: fill-box;
+    text-anchor: middle;
 }

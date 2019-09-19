@@ -1,0 +1,43 @@
+#context {    
+    background: white;
+    opacity: 0.0;
+    height: 81vh;
+    width: 80vw;
+    margin: 0px auto;
+    z-index: -1;
+    position: fixed;
+    top: 11vh;
+    right: 10vw;
+} 
+
+#context > *{    
+  margin: 20px;
+  overflow: hidden auto;
+    height: 70vh;
+}
+
+#context #text {    
+  font-size: 2rem;
+}
+
+#context #text .word.normal {
+  font-weight: 100;
+}
+
+#context #text .word.mark {
+  font-weight: 900;
+  text-decoration: underline;
+}
+
+#context img.info-icons {
+    height: 1.7rem;
+    vertical-align: text-bottom;
+    cursor: pointer;
+} 
+
+#context #header {   
+    font-size: 1.8rem;
+    margin: 0px;
+    text-align: center; 
+    height: min-content;
+}

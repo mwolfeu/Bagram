@@ -1,59 +1,35 @@
-// text with context explorer
 
-class conText {
-
-  constructor(e, d) { // element, data
-    $(e).append("<div id='context-root' style='position:relative;'></div>");
-    var nameKeys = Object.keys(d);
-    nameKeys.forEach(x => {
-      var corpus = d[x].corpus;
-      var ctxtKeys = Object.keys(d[x].context);
-      ctxtKeys.forEach(y => {
-        d[x].context[y].forEach(z => {
+class context {
+  constructor(e, d){
+    this.element = e;
+    this.dataByName = d; 
+    this.name = "";
+  }
+  
+  markContext(n, s) {
+    var sentences = this.dataByName[n].context[s];
+    var corpus = this.dataByName[n].corpus.replace(/\n/g, "<br/>");;
+    //~ sentences.forEach(y => {
+        sentences.forEach(d => {
           // do text highlighting
-          var markBeg = corpus.substring(0, corpus.indexOf(z)).split(' ').length - 1;
-          var markEnd = markBeg + z.split(' ').length - 1;
+          var markBeg = corpus.substring(0, corpus.indexOf(d)).split(' ').length - 1;
+          var markEnd = markBeg + d.split(' ').length - 1;
           var cp = corpus.split(' ').map((d, i) => `<span class='word ${i>=markBeg&&i<=markEnd?"mark":"normal"}'>${d}</span>`).join(' ');
-          $(e).find("#context-root").append(`<div class='context-item' data-name='${x}' data-subj='${y}' data-sentence='${z}'>${cp}</div>`);
+          $("#context #text").html(`<div class='context-item' data-name='${n}' data-subj='${s}' data-sentence='${d}'>${cp}</div>`);  // fix so all are on same page
+          $("#context #text .mark").css("color", d3.rgb(JPP.targetColors[s]).darker(1.7));
           });
-        });
-      });
-    
-    var fontSz = 24; // parseInt(getComputedStyle($(".context-item")[0])["font-size"]); // in px
-    
-    $('.context-item').each(function(e){  // scroll
-      var scrollPx = $(this).find('.mark').first().position().top
-      $(this).animate( {scrollTop: scrollPx }, 500); 
-      });
-    
-    $('.context-item').on("mouseover", function(){onSelectInstance($(this).data("name"), $(this).data("subj")) })
+        //~ });
   }
   
-  addEntries() {
-  }
-
   resetEntries() {
-    $(`.context-item`).removeClass("selected unselected");
+    $('#context').animate({ opacity: 0 }).delay(0).css("z-index", "-1")
   }
   
-  //prevOffset = 0;
-  checkIfInView(element){
-    var parent = $(element).parent();
-    var offset = $(element).position().top - parent.find(">:first-child").position().top ;
+  selectEntry(name, subj) {
     
-    var midViewport = parent.innerHeight() / 2;
-    if(!$(element).visible()){
-        parent.animate({scrollTop: (offset-midViewport)> 0?(offset-midViewport):offset }, 1000);
-        return false;
-    }
-   return true;
-  }
-  
-  selectEntry(n, s) { // name, subject
-    $(`.context-item`).removeClass("selected").addClass("unselected");
-    $(`.context-item[data-name='${n}'][data-subj='${s}']`).removeClass("unselected").addClass("selected");
-    
-    //setTimeout(() => this.checkIfInView(`.context-item[data-name='${n}'][data-subj='${s}']`), 2000); // allow DOM to reflow
-    this.checkIfInView(`.context-item[data-name='${n}'][data-subj='${s}']`)
+    $('#context').animate({ opacity: .90 }).delay(0).css("z-index", "2");
+    // if (this.name != name) 
+    // $(this.element + " #text").html(this.dataByName[name].corpus);
+    this.markContext(name, subj);
   }
 }

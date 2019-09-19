@@ -4,7 +4,7 @@
 JPP = {};
 
 width = 400
-height = 600
+height = 700
 rShift = 1
 
 // $('path').each( function(i,e,t){ setTimeout ((t) => {$(t).css('opacity', "") }, i*.2 * 1000, this) } );
@@ -14,8 +14,8 @@ rShift = 1
 sankey = function() {
   const sankey = d3.sankey()
       //.nodeAlign(d3[`sankey${align[0].toUpperCase()}${align.slice(1)}`])
-      .nodeWidth(.1)
-      .nodePadding(40)
+      .nodeWidth(.2)
+      .nodePadding(10)
       .extent([[1, 5], [width - (rShift * 2) - 1, height - 5]]);
   sankey.nodeId(d => d.name); // accessor
   
@@ -30,15 +30,15 @@ format = function() {
   return d => `${f(d)} Accounts`;
 }()
 
-color = function() {
-  const color = d3.scaleOrdinal(d3.schemeSet3);
-  return name => color(name.replace(/ .*/, ""));
-}()
+//~ color = function() {
+  //~ const color = d3.scaleOrdinal(d3.schemeSet3);
+  //~ return name => color(name.replace(/ .*/, ""));
+//~ }()
 
 
 function onSelectInstance(name, subj) {
   //console.log(d.target.name);
-  infoDisp(name);
+  infoDisp(name, subj);
   JPP.sankey.selectPath(name, subj);
   JPP.ctx.selectEntry(name, subj);
 }
@@ -53,43 +53,34 @@ function onResetInstance() {
   TODO  
   intro page (words?)
   
-  sankey labels
-  sankey categories?
-  sankey window resize
-  closest-to algorithm
+  X sankey fix label location
+  click on dest path to change hilight text / undarken path
   
   pointer
-  popper (info)
+  popper info, path, map, about
   
-  no mg
-  
-  widen hovered entry in JS
-  top info in context-text
-  * BUG: visible does not do TOTAL visibility
-  interleaving text
-  
-  
-  expanded context
+  X highlight txt
+  scroll to text
+
   map
-  
   bottom bars
+  proper howto
   
-  proper chapeau, howto
-  font 
-  colors
+  X font 
+  X colors
 
   x hover == link dep w ppl / dim others / highlight volume
   x click == selects network / shows text
   x click text == widens context
 
-  flow the paths on start
+  X flow the paths on start
 */  
 
-function infoInit() {
-  $('#root #info > *:not(:first)').hide();
-}
+//~ function infoInit() {
+  //~ $('#root #info > *:not(:first)').hide();
+//~ }
 
-var firstDisp = true;
+// var firstDisp = true;
 var dispData = {
     "name":{icon:"user-regular.svg"},
     "age":{icon:"hourglass-half-solid.svg"},
@@ -98,10 +89,13 @@ var dispData = {
     "num-words":{icon:"file-alt-regular.svg"}
 }
 
-function infoDisp(n) {
-  var duration = 300;
+function infoDisp(n,s) {
+  // var duration = 300;
   
-  if (dispData.name.val == n) return;
+  // if (dispData.name.val == n) return;
+  
+  $("#context #header #subject").html(s + ": ");
+  $("#context #header #count").html(" 3 of 10 ");
   
   var d = JPP.accountsByName[n][0];
   dispData["name"].val = d.name;
@@ -112,21 +106,25 @@ function infoDisp(n) {
   
   var html = [];
   Object.keys(dispData).forEach(d => {
+    if (d == 'name') {
+      html.push(`<div id="${d}"> <b> ${dispData[d].val}'s Story: </b> </div>`)
+      return;
+    }
     html.push(`<div id="${d}"> <img class="info-icons" src="img/${dispData[d].icon}">${dispData[d].val}</div>`)
     });
     
-  $("#root #info").append( $('<div>' + html.join(' ') + '</div>').hide() );
+  $("#context #info").html( $('<div>' + html.join(' ') + ' <img class="info-icons map" src="img/map-marked-alt-solid.svg"> </div>' ));
   
-  if (!firstDisp) {
-    $('#root #info *:first').remove();
-  } 
-  firstDisp = false;
+  //~ if (!firstDisp) {
+    //~ $('#context #info *:first').remove();
+  //~ } 
+  //~ firstDisp = false;
   
-  $('#root #info > *:first')
-      .fadeOut(duration)
-      .next()
-      .fadeIn(duration)
-      .end();
+  //~ $('#context #info > *:first')
+      //~ .fadeOut(duration)
+      //~ .next()
+      //~ .fadeIn(duration)
+      //~ .end();
 }
 
 
@@ -136,21 +134,23 @@ $( document ).ready(function() {
   JPP.accountsByName = d3.nest().key(k => k.name).object(codedInterview.accounts);
   
   // info
-  infoInit()
+  // infoInit()
   
   // sankey
   var destNodes = JPP.destKeys.map(d => {return {name:d}});
   var nodes = codedInterview.accounts.map(d => {return {name:d.name}}).concat(destNodes);
   var links = codedInterview.accounts.map((d,i) => {
     var ciaN = codedInterview.accounts[i];
-    return JPP.destKeys.map(e => {return {source:ciaN.name, target:e, value:ciaN.destNodes[e].length}});
+    return JPP.destKeys.map(e => {return {source:ciaN.name, target:e, value:(ciaN.destNodes[e].length)}});
     }).flat();
+  JPP.targetColors = {};
+  JPP.destKeys.forEach((d,i) =>  JPP.targetColors[d] = d3.schemeSet3[i]); 
   
-  JPP.sankey = new sankeyVis({nodes, links});
+  JPP.sankey = new sankeyVis({nodes, links}, JPP.targetColors);
     
   // context ui
   var cData = d3.nest().key(k => k.name).rollup(r => { return{corpus:r[0].text, context: r[0].destNodes}}).object(codedInterview.accounts);
-  JPP.ctx = new conText("#root #vis #context-wrapper #context-text", cData);
+  JPP.ctx = new context("#context", cData);
 
-  $("#top, #info, #bottom").on("mouseover", onResetInstance)
+  $("#top, #bottom").on("mouseover", onResetInstance)
 });

@@ -5,7 +5,7 @@ function onSankeyMouseOverClickNode(d, i) {
 
 
 class sankeyVis {
-  constructor (data) {
+  constructor (data, targetColors) {
   
     const svg = d3.select("#sankey-svg")
       .attr("viewBox", [0, 0, width, height]);
@@ -42,7 +42,7 @@ class sankeyVis {
     link.append("path")
         // .style("opacity", 0.5)
         .attr("d", d3.sankeyLinkHorizontal())
-        .attr("stroke", d => color(d.target.name))
+        .attr("stroke", (d,i) => d3.rgb(targetColors[d.target.name]).darker(1.7))// color(d.target.name))
         //.attr("stroke", d => edgeColor === "none" ? "blue" 
             //~ : edgeColor === "path" ? d.uid 
             //~ : edgeColor === "input" ? color(d.source.name) 
@@ -51,8 +51,9 @@ class sankeyVis {
         // .style("transform", "translateX(" + rShift + "px)")
         .attr("data-name", d => d.source.name)
         .attr("data-subj", d => d.target.name)
+        .style('opacity', '0')
         .on("click", d => onSelectInstance(d.source.name, d.target.name))
-        .on("mouseover", d => onSelectInstance(d.source.name, d.target.name));
+        //.on("mouseover", d => onSelectInstance(d.source.name, d.target.name));
 
     // POPUP
     link.append("title")
@@ -65,31 +66,34 @@ class sankeyVis {
       .data(nodes)
       .join("rect")
         .attr("class", "node")
-        .attr("x", d => d.x0 + rShift)
+        // .attr("x", d => d.x0 + rShift)
+        .attr("x", d => d.x0 < width / 2 ?d.x0+2:d.x0-2)
         .attr("y", d => d.y0)
         .attr("height", d => d.y1 - d.y0)
         .attr("width", d => d.x1 - d.x0)
-        .attr("fill", d => JPP.destKeys.includes(d.name)?color(d.name):"grey")
-        .attr("stroke", d => JPP.destKeys.includes(d.name)?color(d.name):"grey")
-        .on("click", onSankeyMouseOverClickNode)
-        .on("mouseover", onSankeyMouseOverClickNode)
+        .attr("fill", d => JPP.destKeys.includes(d.name)?targetColors[d.name]:"lightgray")
+        .attr("stroke", d => JPP.destKeys.includes(d.name)?targetColors[d.name]:"lightgray")
+        // .on("click", onSankeyMouseOverClickNode)
+        // .on("mouseover", onSankeyMouseOverClickNode)
       .append("title")
         .text(d => `${d.name}\n${format(d.value)}`);
 
-    $('#sankey .node').css("width", "4px");
+    // $('#sankey .node').css("width", "5px");
 
     // NODE LABELS
     svg.append("g")
-        .style("font", "10px sans-serif")
+        //.style("font", "8px sans-serif")
+        .style("font", "4px Lato")
       .selectAll("text")
       .data(nodes)
       .join("text")
-        .attr("x", d => d.x0 < width / 2 ? d.x1 + 6 : d.x0 - 6 + (rShift + 10) )
+        .attr("x", d => d.x0 < width / 2 ? (d.x1 + 6 + 2): (d.x0 - 6 + 10)) // + (rShift + JPP.destKeys.includes(d.name)?10:35 ) )
         .attr("y", d => (d.y1 + d.y0) / 2)
         .attr("dy", "0.35em")
         .attr("text-anchor", d => d.x0 < width / 2 ? "start" : "end")
         .text(d => d.name);
 
+    $('path').each( function(i,e,t){ setTimeout ((t) => {$(t).css('opacity', "") }, i*.2 * 100, this) } );
   }
   
   resetPaths() {
@@ -98,6 +102,7 @@ class sankeyVis {
   
   selectPath(n, s) { // name, subject
     $(`#vis #sankey path`).removeClass("selected").addClass("unselected");
-    $(`#vis #sankey path[data-name='${n}'][data-subj='${s}']`).removeClass("unselected").addClass("selected");
+    $(`#vis #sankey path[data-name='${n}']`).removeClass("unselected").addClass("selected");
+    // $(`#vis #sankey path[data-name='${n}'][data-subj='${s}']`).removeClass("unselected").addClass("selected");
   }
 }
