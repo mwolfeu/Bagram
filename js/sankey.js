@@ -103,6 +103,7 @@ class sankeyVis {
   selectPath(n, s) { // name, subject
     $(`#vis #sankey path`).removeClass("selected").addClass("unselected");
     $(`#vis #sankey path[data-name='${n}']`).removeClass("unselected").addClass("selected");
-    // $(`#vis #sankey path[data-name='${n}'][data-subj='${s}']`).removeClass("unselected").addClass("selected");
+    $(`#vis #sankey path[data-name='${n}']`).css("stroke", "");
+    $(`#vis #sankey path[data-name='${n}'][data-subj='${s}']`).css("stroke", d3.rgb(JPP.targetColors[s]).darker(.5));
   }
 }

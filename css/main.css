@@ -111,10 +111,11 @@
     margin: 0px auto;
     width: min-content;
     margin: 0px auto;
+  cursor: pointer;
 }
 
 #root #bottom #howto #text{
-    width: 60%;
+    width: 75%;
     margin-right: auto;
 }
 
@@ -126,6 +127,7 @@
   height: 2rem;
   width: 2rem;
   margin: auto 0px;
+  cursor: pointer;
 }
 
 /* SCROLL */

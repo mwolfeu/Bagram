@@ -54,17 +54,17 @@ function onResetInstance() {
   intro page (words?)
   
   X sankey fix label location
-  click on dest path to change hilight text / undarken path
+  X click on dest path to change hilight text / undarken path
   
-  pointer
+  X pointer
   popper info, path, map, about
   
   X highlight txt
-  scroll to text
+  X scroll to text
 
   map
-  bottom bars
-  proper howto
+  bottom bars / clicking on nodes / rid of reset
+  X proper howto
   
   X font 
   X colors
