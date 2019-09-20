@@ -19,6 +19,7 @@
 #context #text {    
   font-size: 2rem;
     position: relative;
+    padding: 0em 5em;
 }
 
 #context #text .word.normal {

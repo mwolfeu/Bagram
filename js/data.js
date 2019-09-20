@@ -81,7 +81,7 @@ var codedInterview = {
     detentionMonths:[15],
     homeName:["Peshwar", "Pakistan"],
     destName:["Jalabad", "Afghanistan"],
-    text: "Laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    text: LI,
     destNodes:{
       "Economic Status":["B.","A."],
       // "Terrorist Connection":["B.","C.", "A."],
@@ -110,7 +110,7 @@ var codedInterview = {
     detentionMonths:[15],
     homeName:["Peshwar", "Pakistan"],
     destName:["Jalabad", "Afghanistan"],
-    text: "Laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    text: LI,
     destNodes:{
       "Economic Status":["B.","A."],
       // "Terrorist Connection":["B.","C.", "A."],
@@ -139,7 +139,7 @@ var codedInterview = {
     detentionMonths:[15],
     homeName:["Peshwar", "Pakistan"],
     destName:["Jalabad", "Afghanistan"],
-    text: "Laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    text: LI,
     destNodes:{
       "Economic Status":["B.","A."],
       // "Terrorist Connection":["B.","C.", "A."],
@@ -168,7 +168,7 @@ var codedInterview = {
     detentionMonths:[15],
     homeName:["Peshwar", "Pakistan"],
     destName:["Jalabad", "Afghanistan"],
-    text: "Laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    text: LI,
     destNodes:{
       "Economic Status":["B.","A."],
       // "Terrorist Connection":["B.","C.", "A."],
@@ -197,7 +197,7 @@ var codedInterview = {
     detentionMonths:[15],
     homeName:["Peshwar", "Pakistan"],
     destName:["Jalabad", "Afghanistan"],
-    text: "Laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    text: LI,
     destNodes:{
       "Economic Status":["B.","A."],
       // "Terrorist Connection":["B.","C.", "A."],
@@ -226,7 +226,7 @@ var codedInterview = {
     detentionMonths:[15],
     homeName:["Peshwar", "Pakistan"],
     destName:["Jalabad", "Afghanistan"],
-    text: "Laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    text: LI,
     destNodes:{
       "Economic Status":["B.","A."],
       // "Terrorist Connection":["B.","C.", "A."],
@@ -255,7 +255,7 @@ var codedInterview = {
     detentionMonths:[15],
     homeName:["Peshwar", "Pakistan"],
     destName:["Jalabad", "Afghanistan"],
-    text: "Laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    text: LI,
     destNodes:{
       "Economic Status":["B.","A."],
       // "Terrorist Connection":["B.","C.", "A."],
@@ -284,7 +284,7 @@ var codedInterview = {
     detentionMonths:[15],
     homeName:["Peshwar", "Pakistan"],
     destName:["Jalabad", "Afghanistan"],
-    text: "Laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    text: LI,
     destNodes:{
       "Economic Status":["B.","A."],
       // "Terrorist Connection":["B.","C.", "A."],
@@ -313,7 +313,7 @@ var codedInterview = {
     detentionMonths:[15],
     homeName:["Peshwar", "Pakistan"],
     destName:["Jalabad", "Afghanistan"],
-    text: "Laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    text: LI,
     destNodes:{
       "Economic Status":["B.","A."],
       // "Terrorist Connection":["B.","C.", "A."],
@@ -342,7 +342,7 @@ var codedInterview = {
     detentionMonths:[15],
     homeName:["Peshwar", "Pakistan"],
     destName:["Jalabad", "Afghanistan"],
-    text: "Laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    text: LI,
     destNodes:{
       "Economic Status":["B.","A."],
       // "Terrorist Connection":["B.","C.", "A."],

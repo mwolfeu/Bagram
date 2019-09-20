@@ -7,10 +7,6 @@ width = 400
 height = 700
 rShift = 1
 
-// $('path').each( function(i,e,t){ setTimeout ((t) => {$(t).css('opacity', "") }, i*.2 * 1000, this) } );
-// https://paradite.com/2016/04/30/d3-js-chained-transitions/
-// https://github.com/d3/d3-transition delay()
-
 sankey = function() {
   const sankey = d3.sankey()
       //.nodeAlign(d3[`sankey${align[0].toUpperCase()}${align.slice(1)}`])
@@ -52,35 +48,15 @@ function onResetInstance() {
 /*
   TODO  
   intro page (words?)
-  
-  X sankey fix label location
-  X click on dest path to change hilight text / undarken path
-  
-  X pointer
-  popper info, path, map, about
-  
-  X highlight txt
-  X scroll to text
 
-  map
-  bottom bars / clicking on nodes / rid of reset
-  X proper howto
-  
-  X font 
-  X colors
+  BUG: when paths selected / delete them and draw on top
+  x map
 
-  x hover == link dep w ppl / dim others / highlight volume
-  x click == selects network / shows text
-  x click text == widens context
-
-  X flow the paths on start
+  ? order bars by some logic
+  ? breathing path
+  ? click on bottom bar => scroll AND HIGHLIGHT OTHER node
 */  
 
-//~ function infoInit() {
-  //~ $('#root #info > *:not(:first)').hide();
-//~ }
-
-// var firstDisp = true;
 var dispData = {
     "name":{icon:"user-regular.svg"},
     "age":{icon:"hourglass-half-solid.svg"},
@@ -90,9 +66,6 @@ var dispData = {
 }
 
 function infoDisp(n,s) {
-  // var duration = 300;
-  
-  // if (dispData.name.val == n) return;
   
   $("#context #header #subject").html(s + ": ");
   $("#context #header #count").html(" 3 of 10 ");
@@ -104,37 +77,42 @@ function infoDisp(n,s) {
   dispData["detained"].val = d.detentionMonths + " months";
   dispData["num-words"].val = d.text.split(' ').length + " words";
   
+  var xlateTxt = {
+    name:"Name:",
+    age:"Age:",
+    job:"Work:",
+    detained:"Detainment:",
+    "num-words":"Length:"
+    }
+  
   var html = [];
   Object.keys(dispData).forEach(d => {
     if (d == 'name') {
-      html.push(`<div id="${d}"> <b> ${dispData[d].val}'s Story: </b> </div>`)
+      html.push(`<div id="${d}" class="info-xtra"> <b> ${dispData[d].val}'s Story: </b> </div>`)
       return;
     }
-    html.push(`<div id="${d}"> <img class="info-icons" src="img/${dispData[d].icon}">${dispData[d].val}</div>`)
+    html.push(`<div id="${d}"> <img class="info-icons" src="img/${dispData[d].icon}"><span class="info-xtra"><b>${xlateTxt[d]}</b></span> ${dispData[d].val}</div>`)
     });
     
   $("#context #info").html( $('<div>' + html.join(' ') + ' <img class="info-icons map" src="img/map-marked-alt-solid.svg"> </div>' ));
-  
-  //~ if (!firstDisp) {
-    //~ $('#context #info *:first').remove();
-  //~ } 
-  //~ firstDisp = false;
-  
-  //~ $('#context #info > *:first')
-      //~ .fadeOut(duration)
-      //~ .next()
-      //~ .fadeIn(duration)
-      //~ .end();
+  tippy("#context #info .map", { // map popup
+    content: "Destination: Jalalabad <br><img id='map-info' style='height:35vh;width:50vw' src='img/travel.png'>",
+    animation: "shift-away",
+    arrow: false,
+    placement: "left-end",
+    trigger: "click mouseenter",
+    inertia: true,
+    // followCursor: true
+  }); 
 }
-
-
 
 $( document ).ready(function() {
   JPP.destKeys = Object.keys(codedInterview.accounts[0].destNodes);
   JPP.accountsByName = d3.nest().key(k => k.name).object(codedInterview.accounts);
   
   // info
-  // infoInit()
+  $("#info").on("mouseover", d => $('#info .info-xtra').addClass("widen"));
+  $("#info").on("mouseout", d => $('#info .info-xtra').removeClass("widen"));
   
   // sankey
   var destNodes = JPP.destKeys.map(d => {return {name:d}});
@@ -151,6 +129,20 @@ $( document ).ready(function() {
   // context ui
   var cData = d3.nest().key(k => k.name).rollup(r => { return{corpus:r[0].text, context: r[0].destNodes}}).object(codedInterview.accounts);
   JPP.ctx = new context("#context", cData);
-
-  $("#top, #bottom").on("mouseover", onResetInstance)
+  
+  // comparison chart
+  comparisonChartInit(); 
+  
+  // click outside == reset vis
+  $("#top, #bottom").on("click", onResetInstance);
+  
+  
+  
+  tippy("#bottom #howto #about", {
+      content: "Site &copy; 2019 Michael Wolf<br>Source Data &copy; 2019 JPP",
+      animation: "shift-away",
+      arrow: true,
+      inertia: true,
+      // followCursor: true
+    }); 
 });
