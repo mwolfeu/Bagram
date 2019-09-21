@@ -4,7 +4,7 @@
 JPP = {};
 
 width = 400
-height = 700
+height = 570
 rShift = 1
 
 sankey = function() {

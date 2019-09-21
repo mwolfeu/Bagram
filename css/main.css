@@ -10,7 +10,7 @@ html {
   color: #fafafa;
   font-family: lato;
   font-weight: 500;
-  font-size: 9rem;
+  font-size: 6rem;
   margin: 35vh 0px;
   width: 100vw;
   height: 100vh;
@@ -54,12 +54,12 @@ html {
 }
 
 #root #top #title #top {
-  font-size: 1.3rem;
-  letter-spacing: 0.4em;
+  font-size: .9rem;
+  letter-spacing: 0.55em;
 }
 
 #root #top #title #bottom {
-  font-size: 6rem;
+  font-size: 4rem;
   dfont-weight: bold;
   line-height: .9em;
   margin: -10px;
@@ -67,7 +67,7 @@ html {
 }
 
 #root #top #chapeau {
-  font-size: 22px;
+  font-size: .9rem;
   max-width: 30em;
   font-weight: 300;
   margin: auto;
@@ -79,14 +79,14 @@ html {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  height: 8rem;
+  height: 4.4rem;
   width: 12rem;
   margin: auto 0px;
 }
 
 #root #info {
-  font-size: 2rem;
-  height: 3rem;
+    font-size: 1.4rem;
+    height: 2.3rem;
 }
 
 #root #info > * {
@@ -153,7 +153,7 @@ html {
 
 #root #vis > * {
   width: 100%;
-  height: 81vh;
+  height: 80.4vh;
   overflow: hidden;
 }
 
@@ -168,7 +168,7 @@ html {
   border: black solid;
   border-width: 3px 0px 0px 0px;
   display: flex;
-  font-size: 1.3rem;
+  font-size: .8rem;
 }
 
 #root #bottom #chart {
@@ -188,14 +188,14 @@ html {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  height: 2rem;
-  width: 2rem;
+  height: 1.5rem;
+  width: 1.5rem;
   margin: auto 0px;
   cursor: pointer;
 }
 
 .tippy-tooltip {
-  font-size: 1.4rem;
+  font-size: .9rem;
 }
 
 .tippy-tooltip.dark-theme {

@@ -3,8 +3,8 @@ function comparisonChartInit() {
     JPP.comparisonChart = c3.generate({
     bindto: '#chart',
     size: {
-      width: 400,
-      height: 75
+      width: 300,
+      height: 50
     },
     //~ padding: {
       //~ top: 20
