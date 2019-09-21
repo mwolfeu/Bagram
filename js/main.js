@@ -31,6 +31,26 @@ format = function() {
   //~ return name => color(name.replace(/ .*/, ""));
 //~ }()
 
+// n == name of .node
+function scrollTo(n) {
+  var svgHeight = $('#sankey svg').height();
+  var viewportHeight = $('#sankey').height();
+  var fraction = svgHeight / height;
+  
+  // get node y 
+  var nodeY = +$(`.node[data-name='${n}']`).attr("y"); 
+  $('#sankey').animate( {scrollTop: nodeY * fraction }, 300)
+  
+  //~ var sankeyTop = $('#sankey').position().top;
+  //~ var sankeyHeight = $('#sankey').height();
+  //~ var nodeTop = $(`.node[data-name="${n}"]`).position().top;
+  //~ var fraction = (height/sankeyHeight);
+  
+  //~ $('#sankey').animate( {scrollTop: 0 }, 0)
+  //~ // $('#sankey').animate( {scrollTop: ((nodeTop+sankeyTop)*fraction) }, 500);
+  //~ $('#sankey').animate( {scrollTop: ((nodeTop-sankeyTop)) }, 400);
+  // $('#sankey').animate( {scrollTop: ((nodeTop*fraction)-sankeyTop) }, 500);
+}
 
 function onSelectInstance(name, subj) {
   //console.log(d.target.name);
@@ -54,7 +74,8 @@ function onResetInstance() {
 
   ? order bars by some logic
   ? breathing path
-  ? click on bottom bar => scroll AND HIGHLIGHT OTHER node
+  X click on bottom bar => scroll AND HIGHLIGHT OTHER node
+  enhancement: relate scroll to viewport height
 */  
 
 var dispData = {
@@ -110,6 +131,32 @@ $( document ).ready(function() {
   JPP.destKeys = Object.keys(codedInterview.accounts[0].destNodes);
   JPP.accountsByName = d3.nest().key(k => k.name).object(codedInterview.accounts);
   
+  // start page
+  var xToggle = true;
+  $(".intro").css("background", (i,e) => `url(${"img/dawn/"+i+".jpg"}) no-repeat center`);
+  $($(".intro").get().reverse()).each(function(i,e){
+    var tOut = 1700;
+    
+    if (i==6) {
+      $(this).css("opacity","1").css("background-size", "120%"); // show last picture
+      // transition to color
+      setTimeout(d => $(this).css("filter", "grayscale(0)"), (i+2)*tOut); 
+      // fade last picture
+      var pause = (i+4)*tOut;
+      setTimeout(d => { $(this).fadeOut(2000); $("#intro-background").fadeOut(1000)}, pause);
+    } else {
+      var rx = ($("body").width()*.9)/2;
+      var ry = ($("body").height()*.9)/2;
+      var x = d3.scaleRadial().domain([0, 1]).range([0,xToggle?rx:-rx])(Math.random());
+      var y = d3.scaleRadial().domain([0, 1]).range([-ry,ry])(Math.random());
+      xToggle = !xToggle;
+      
+      $(this).css("transform",`scale(.5) translate(${x}px,${y}px)`)
+      setTimeout(d => $(this).css("opacity", ".6"), (i)*tOut); // fade in
+      setTimeout(d => $(this).fadeOut(1000), (i+1)*tOut); // fade out
+    }
+    });
+  
   // info
   $("#info").on("mouseover", d => $('#info .info-xtra').addClass("widen"));
   $("#info").on("mouseout", d => $('#info .info-xtra').removeClass("widen"));
@@ -134,9 +181,7 @@ $( document ).ready(function() {
   comparisonChartInit(); 
   
   // click outside == reset vis
-  $("#top, #bottom").on("click", onResetInstance);
-  
-  
+  $("#top").on("click", onResetInstance);
   
   tippy("#bottom #howto #about", {
       content: "Site &copy; 2019 Michael Wolf<br>Source Data &copy; 2019 JPP",

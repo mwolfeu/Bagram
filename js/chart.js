@@ -16,6 +16,17 @@ function comparisonChartInit() {
         ['data0', 0,0,0,0,0,0,0,0,0,0,0,0]
       ],
       type: 'bar',
+      onclick: function (d, e) { 
+        var isTarget = d.name == "data0";
+  
+        if (isTarget) var idx = d.index;
+        else var idx = parseInt(d.name.replace(/\D/g,''));
+        
+        var ccd = JPP.comparisonChartData[idx];
+        // console.log(ccd[isTarget?"s":"n"], d); 
+        scrollTo(ccd[!isTarget?"s":"n"])
+        JPP.sankey.onClickNode({name:ccd[!isTarget?"s":"n"]}, !isTarget);
+        },
     onmouseover: chartTip,
     onmouseout: d => JPP.chartTips.forEach(t => t.destroy())
     //~ onmouseout: function () { ... }

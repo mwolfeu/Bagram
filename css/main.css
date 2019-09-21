@@ -6,6 +6,31 @@ html {
   overflow: hidden;
 }
 
+#intro-text {
+  color: #fafafa;
+  font-family: lato;
+  font-weight: 500;
+  font-size: 9rem;
+  margin: 35vh 0px;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+  opacity: .5;
+}
+
+.intro {
+  opacity: 0;
+}
+
+#intro-background, .intro {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  transition: filter 2s,opacity 1s;
+  filter: grayscale(1);
+}
+
 #root {
   display: flex;
   flex-direction: column;
