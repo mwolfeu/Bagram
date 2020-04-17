@@ -142,7 +142,8 @@ $( document ).ready(function() {
       // transition to color
       setTimeout(d => $(this).css("filter", "grayscale(0)"), (i+2)*tOut); 
       // fade last picture
-      var pause = (i+4)*tOut;
+      // mw STOP DEMO - var pause = (i+4)*tOut;
+      var pause = (3)*tOut;
       setTimeout(d => { $(this).fadeOut(2000); $("#intro-background").fadeOut(1000)}, pause);
     } else {
       var rx = ($("body").width()*.9)/2;
@@ -152,8 +153,9 @@ $( document ).ready(function() {
       xToggle = !xToggle;
       
       $(this).css("transform",`scale(.5) translate(${x}px,${y}px)`)
-      setTimeout(d => $(this).css("opacity", ".6"), (i)*tOut); // fade in
-      setTimeout(d => $(this).fadeOut(1000), (i+1)*tOut); // fade out
+      // MW - STOP CHEEZY DEMO 
+      // setTimeout(d => $(this).css("opacity", ".6"), (i)*tOut); // fade in
+      // setTimeout(d => $(this).fadeOut(1000), (i+1)*tOut); // fade out
     }
     });
   
