@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-  
+
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>JPP: Stories from Bagram</title>
 	<meta name="author" content="Michael Wolf" />
   <meta name="description" content="Justice Project Pakistan Bagram Companion Visualization" />
 	<meta name="Resource-type" content="Document" />
 
-  
+
 <!--
   <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800,900&display=swap" rel="stylesheet">
@@ -23,15 +23,15 @@
   <link rel="stylesheet" type="text/css" href="css/sankey.css" />
   <link rel="stylesheet" type="text/css" href="css/context.css" />
   <link rel="stylesheet" type="text/css" href="css/main.css" />
-  
+
 </head>
 <body>
-  
+
   <!-- jQuery 3.4.1 -->
   <script src="lib/jquery.min.js"></script>
   <script src="lib/jquery-visible.js"></script>
   <script src="lib/d3.v5.min.js"></script>
-  
+
   <script src="lib/popper.js@1"></script>
   <script src="lib/tippy.js@4"></script>
 
@@ -43,7 +43,7 @@
   <script src="lib/d3-path@1"></script>
   <script src="lib/d3-shape@1"></script>
   <script src="lib/d3-sankey@0"></script>
-  
+
   <script src="lib/d3-array.v2.min.js"></script>
   <script src="lib/d3-color.v1.min.js"></script>
   <script src="lib/d3-format.v1.min.js"></script>
@@ -52,7 +52,7 @@
   <script src="lib/d3-time-format.v2.min.js"></script>
   <script src="lib/d3-scale.v3.min.js"></script>
   <script src="lib/c3.min.js"></script>
-  
+
 <!--
   <div class="intro-background"></div><div class="intro-background"></div>
 -->
@@ -64,45 +64,45 @@
   <div class="intro"></div>
   <div class="intro"></div>
   <div class="intro"></div>
-  
+
   <div id="root">
-    
+
     <div id="context">
           <div id="info"></div>
           <div id="header"> <b><span id="subject"></span></b> <img id="left-arrow" class="info-icons" src="img/angle-left-solid.svg"><span id="count"></span><img id="right-arrow" class="info-icons" src="img/angle-right-solid.svg"> </div>
           <div id="text"></div>
-    </div>   
-      
-    <div id="top" class="row">  
-      <div id="title"> <div id="top">Stories From</div> <div id="bottom">Bagram</div>  </div> 
-      <div id="chapeau">In 2010, JPP launched the Bagram project, focused on the repatriation of Pakistani's held in the Detention Facility in Parwan (DFIP) in Afghanistan. Following the US led ‘war on terror,’ American and Afghan forces detained more than 40 Pakistani citizens.  These are their stories.</div> 
-      <div id="group"></div>  
     </div>
-    
+
+    <div id="top" class="row">
+      <div id="title"> <div id="top">Stories From</div> <div id="bottom">Bagram</div>  </div>
+      <div id="chapeau">In 2010, JPP launched the Bagram project, focused on the repatriation of Pakistani's held in the Detention Facility in Parwan (DFIP) in Afghanistan. Following the US led ‘war on terror,’ American and Afghan forces detained more than 40 Pakistani citizens.  These are their stories.</div>
+      <div id="group"></div>
+    </div>
+
 
 <!--
     <animate id = "small" attributeName = "viewBox" begin = "0" dur = "0.96s" from = "0 110 550 600" to = "0 0 300 600"  />
 -->
-    <div id="vis" class="row">  
-      <div id="sankey"> 
-        <svg id="sankey-svg"></svg> 
-      </div> 
+    <div id="vis" class="row">
+      <div id="sankey">
+        <svg id="sankey-svg"></svg>
+      </div>
     </div>
 
-    
-    <div id="bottom" class="row">  <div id="qty-graph"> <div id="chart"></div> </div> 
+
+    <div id="bottom" class="row">  <div id="qty-graph"> <div id="chart"></div> </div>
       <div id="howto">
         <span id="text">Click on connections for a contextual view, or endpoints to compare incident volume via bar graph. Connection thickness varies with the incident mentions in the corpus. Hover over bar graph or context header for more information.</span>
         <div id="about"></div>
-      </div>  
+      </div>
     </div>
   </div>
-    
+
   <script src="js/data.js"></script>
   <script src="js/sankey.js"></script>
   <script src="js/context.js"></script>
   <script src="js/chart.js"></script>
   <script src="js/main.js"></script>
-    
+
 </body>
 </html>

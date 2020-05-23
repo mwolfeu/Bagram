@@ -27,7 +27,7 @@ html {
   width: 100vw;
   height: 100vh;
   background: black;
-  transition: filter 2s,opacity 1s;
+  transition: filter 2s, opacity 1s;
   filter: grayscale(1);
 }
 
@@ -73,7 +73,7 @@ html {
   margin: auto;
   margin-left: 0px;
 }
-  
+
 #root #top #group {
   background-image: url('../img/JPP-Logo.png');
   background-size: contain;
@@ -136,7 +136,7 @@ html {
     overflow: hidden;
     display: inline-flex;
 }
-  
+
 #root #info .info-icons {
   width: 1em;
   height: 1em;
@@ -211,15 +211,15 @@ html {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; 
+  background: #f1f1f1;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888; 
+  background: #888;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #555;
 }
